@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "stdio.h"
 
 namespace Firefly {
 	Application::Application()
@@ -8,7 +9,7 @@ namespace Firefly {
 
 	Application::~Application()
 	{
-
+		printf("destructed application object!");
 	}
 
 	void Application::Run()

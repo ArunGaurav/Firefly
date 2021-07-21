@@ -1,11 +1,19 @@
 #pragma once
-#include "Application.h"
 
-extern Firefly::Application* Firefly::CreateApplication();
+#ifdef FF_PLATFORM_WINDOWS
 
-int main()
-{
-	Firefly::Application* app = Firefly::CreateApplication();
-	app->Run();
-	delete app;
-}
+	extern Firefly::Application* Firefly::CreateApplication();
+
+	int main()
+	{
+		Firefly::Log::Init();
+		FF_CORE_ERROR("Engine: error");
+		FF_INFO("Sandbox: info");
+
+		Firefly::Application* app = Firefly::CreateApplication();
+		app->Run();
+		delete app;
+	}
+
+#endif 
+

@@ -5,8 +5,10 @@
     <ClInclude Include="src\Firefly\Application.h" />
     <ClInclude Include="src\Firefly.h" />
     <ClInclude Include="src\Firefly\EntryPoint.h" />
+    <ClInclude Include="src\Firefly\Log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Firefly\Application.cpp" />
+    <ClCompile Include="src\Firefly\Log.cpp" />
   </ItemGroup>
 </Project>
