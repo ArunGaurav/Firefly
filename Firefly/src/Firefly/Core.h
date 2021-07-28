@@ -9,3 +9,5 @@
 #else
 	#error Firefly doesnt support this platform
 #endif
+
+#define BIT(x) (1 << x)

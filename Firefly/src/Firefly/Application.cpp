@@ -1,10 +1,11 @@
 #include "Application.h"
+#include "Firefly/Log.h"	
+#include "Firefly/Events/ApplicationEvents.h" 
 #include <iostream>
 
 namespace Firefly {
 	Application::Application()
 	{
-
 	}
 
 	Application::~Application()
@@ -14,6 +15,10 @@ namespace Firefly {
 
 	void Application::Run()
 	{
+		WindowClose close;
+		WindowResizeEvent R(1920, 1080);
+		FF_CORE_TRACE(R);
+		FF_CORE_WARN(close.ToString());
 		while (true);
 	}
 }

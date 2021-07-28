@@ -4,6 +4,9 @@
     <Filter Include="Firefly">
       <UniqueIdentifier>{36F0610D-A2CF-E0A8-ABE7-6B7F1746470A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Firefly\Events">
+      <UniqueIdentifier>{5A832C6F-4651-2075-2FE5-909B1B52FCD9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Firefly.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Firefly\EntryPoint.h">
       <Filter>Firefly</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Firefly\Events\ApplicationEvents.h">
+      <Filter>Firefly\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Firefly\Events\Events.h">
+      <Filter>Firefly\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Firefly\Events\KeyEvents.h">
+      <Filter>Firefly\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Firefly\Events\MouseEvents.h">
+      <Filter>Firefly\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Firefly\Log.h">
       <Filter>Firefly</Filter>

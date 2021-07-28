@@ -24,6 +24,7 @@ project "Firefly"
 
 	includedirs
 	{
+		"Firefly/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
