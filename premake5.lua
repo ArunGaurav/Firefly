@@ -16,6 +16,9 @@ project "Firefly"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "ffpch.h"
+	pchsource "Firefly/src/ffpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

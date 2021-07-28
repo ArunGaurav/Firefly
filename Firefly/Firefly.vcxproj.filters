@@ -34,6 +34,7 @@
     <ClInclude Include="src\Firefly\Log.h">
       <Filter>Firefly</Filter>
     </ClInclude>
+    <ClInclude Include="src\ffpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Firefly\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Firefly\Log.cpp">
       <Filter>Firefly</Filter>
     </ClCompile>
+    <ClCompile Include="src\ffpch.cpp" />
   </ItemGroup>
 </Project>

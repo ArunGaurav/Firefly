@@ -1,6 +1,5 @@
 #pragma once
 #include "Events.h"
-#include <sstream>
 
 namespace Firefly {
 	class FIREFLY_API MouseMoveEvent : public Event

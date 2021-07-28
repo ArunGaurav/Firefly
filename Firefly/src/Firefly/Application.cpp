@@ -1,7 +1,7 @@
+#include "ffpch.h"
 #include "Application.h"
 #include "Firefly/Log.h"	
-#include "Firefly/Events/ApplicationEvents.h" 
-#include <iostream>
+#include "Firefly/Events/ApplicationEvents.h"
 
 namespace Firefly {
 	Application::Application()

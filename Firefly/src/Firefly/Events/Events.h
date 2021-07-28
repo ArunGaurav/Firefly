@@ -1,8 +1,6 @@
 #pragma once
+#include "ffpch.h"
 #include "Firefly/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Firefly {
 	// events currently are blocking, which means they'll be dispatched immediately when the events occur
