@@ -3,9 +3,13 @@
 #include "Firefly/Log.h"	
 #include "Firefly/Events/ApplicationEvents.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Firefly {
+
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -15,10 +19,12 @@ namespace Firefly {
 
 	void Application::Run()
 	{
-		WindowClose close;
-		WindowResizeEvent R(1920, 1080);
-		FF_CORE_TRACE(R);
-		FF_CORE_WARN(close.ToString());
-		while (true);
+		while (m_Running)
+		{
+			glClearColor(1.0, 1.0, 0.0, 1.0);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
+		}
 	}
+
 }

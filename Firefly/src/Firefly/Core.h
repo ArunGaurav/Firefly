@@ -10,4 +10,12 @@
 	#error Firefly doesnt support this platform
 #endif
 
+#ifdef FF_ENABLE_ASSERTS
+	#define FF_ASSERT(x, ...) { if(!(x)) { FF_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define FF_CORE_ASSERT(x, ...) { if(!(x)) { FF_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define FF_ASSERT(x, ...)
+	#define FF_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)
