@@ -34,7 +34,7 @@ namespace Firefly {
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "Window Closed!:";
+			ss << "Window Closed!";
 			return ss.str();
 		}
 
