@@ -47,7 +47,7 @@ project "Firefly"
 
 	filter "system:windows"	
 		cppdialect "C++17"
-		staticruntime "Off"
+		staticruntime "On"
 		systemversion "latest"
 
 	defines
@@ -62,16 +62,19 @@ project "Firefly"
 	}
 
 	filter "configurations:Debug"
-	defines "FF_DEBUG"
-	symbols "On"
+		defines "FF_DEBUG"
+		buildoptions "/MDd"
+		symbols "On"
 
 	filter "configurations:Release"
-	defines "FF_RELEASE"
-	optimize "On"
+		defines "FF_RELEASE"
+		buildoptions "/Md"
+		optimize "On"
 
 	filter "configurations:Dist"
-	defines "FF_DIST"
-	optimize "On"
+		defines "FF_DIST"
+		buildoptions "/Md"
+		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
@@ -109,14 +112,17 @@ project "Sandbox"
 	}
 
 	filter "configurations:Debug"
-	defines "FF_DEBUG"
-	symbols "On"
+		defines "FF_DEBUG"
+		buildoptions "/MDd"
+		symbols "On"
 
 	filter "configurations:Release"
-	defines "FF_RELEASE"
-	optimize "On"
+		defines "FF_RELEASE"
+		buildoptions "/Md"
+		optimize "On"
 
 	filter "configurations:Dist"
-	defines "FF_DIST"
-	optimize "On"
+		defines "FF_DIST"
+		buildoptions "/Md"
+		optimize "On"
 	 

@@ -44,7 +44,7 @@ namespace Firefly {
 			return GetCategoryFlags() & category;
 		}
 
-	protected:
+	public:
 		bool m_Handled = false;
 	};
 

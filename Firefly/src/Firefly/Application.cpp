@@ -19,12 +19,28 @@ namespace Firefly {
 		std::cout << "destructed application object!\n";
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_Layerstack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_Layerstack.PushOverlay(overlay);
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
 		bool Isdispatched = dispatcher.Dispatch<WindowClose>(BIND_EVENT_FN(OnWindowClose));
 
-		FF_CORE_TRACE("{0}", e);
+		//FF_CORE_TRACE("{0}", e);
+		for (auto it = m_Layerstack.end(); it != m_Layerstack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+			if (e.m_Handled)
+				break;
+		}
 	}
 
 	bool Application::OnWindowClose(WindowClose& close)
@@ -39,6 +55,10 @@ namespace Firefly {
 		{
 			glClearColor(1.0, 1.0, 0.0, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_Layerstack)
+				layer->OnUpdate();
+
 			m_Window->OnUpdate();
 		}
 	}
