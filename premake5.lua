@@ -11,9 +11,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Firefly/vendor/GLFW/include"
+IncludeDir["Glad"] = "Firefly/vendor/Glad/include"
 
 include "Firefly/vendor/GLFW"
-
+include "Firefly/vendor/Glad"
 
 project "Firefly"
 	location "Firefly"
@@ -36,11 +37,13 @@ project "Firefly"
 	{
 		"Firefly/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links 
 	{
+		"Glad",
 		"GLFW",
 		"opengl32.lib"
 	}
@@ -53,7 +56,8 @@ project "Firefly"
 	defines
 	{
 		"FF_PLATFORM_WINDOWS",
-		"FF_BUILD_DLL"
+		"FF_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	postbuildcommands
