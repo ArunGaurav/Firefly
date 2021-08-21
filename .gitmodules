@@ -4,3 +4,6 @@
 [submodule "Firefly/vendor/GLFW"]
 	path = Firefly/vendor/GLFW
 	url = https://github.com/TheCherno/glfw.git
+[submodule "Firefly/vendor/ImGui"]
+	path = Firefly/vendor/ImGui
+	url = https://github.com/TheCherno/imgui

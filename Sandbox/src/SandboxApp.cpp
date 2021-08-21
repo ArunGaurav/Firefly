@@ -26,7 +26,9 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer);
+		PushLayer(new Firefly::ImGuiLayer);
 	}
+
 	~Sandbox()
 	{
 

@@ -7,14 +7,18 @@ workspace "Firefly"
     }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+startproject "Sandbox"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Firefly/vendor/GLFW/include"
 IncludeDir["Glad"] = "Firefly/vendor/Glad/include"
+IncludeDir["ImGui"] = "Firefly/vendor/ImGui"
 
 include "Firefly/vendor/GLFW"
 include "Firefly/vendor/Glad"
+include "Firefly/vendor/ImGui"
+
 
 project "Firefly"
 	location "Firefly"
@@ -38,13 +42,15 @@ project "Firefly"
 		"Firefly/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links 
 	{
 		"Glad",
 		"GLFW",
+		"ImGui",
 		"opengl32.lib"
 	}
 
