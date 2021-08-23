@@ -11,7 +11,7 @@ namespace Firefly {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		Apptick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MousebuttonClicked, MousebuttonReleased, MouseMoved, MouseScrolled
 	};
 

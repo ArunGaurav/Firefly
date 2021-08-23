@@ -2,6 +2,7 @@
 #include "Events.h"
 
 namespace Firefly {
+
 	class FIREFLY_API KeyEvent : public Event
 	{
 	public:
@@ -55,4 +56,23 @@ namespace Firefly {
 
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
+
+	class FIREFLY_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int KeyCode)
+			: KeyEvent(KeyCode)
+		{
+		}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
+
 }
