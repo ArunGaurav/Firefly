@@ -24,6 +24,7 @@ project "Firefly"
 	location "Firefly"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,7 +57,6 @@ project "Firefly"
 
 	filter "system:windows"	
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 	defines
@@ -66,30 +66,28 @@ project "Firefly"
 		"GLFW_INCLUDE_NONE"
 	}
 
-	postbuildcommands
-	{
-		("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-	}
+
 
 	filter "configurations:Debug"
 		defines "FF_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "FF_RELEASE"
-		buildoptions "/Md"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "FF_DIST"
-		buildoptions "/Md"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -106,6 +104,11 @@ project "Sandbox"
 		"Firefly/vendor/spdlog/include"
 	}
 	
+	postbuildcommands
+	{
+		("{COPY} ../bin/" .. outputdir .. "/Firefly/Firefly.dll" .. " ../bin/" .. outputdir .. "/%{prj.name}")
+	}
+	
 	links
 	{
 		"Firefly"
@@ -113,7 +116,6 @@ project "Sandbox"
 
 	filter "system:windows"	
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 	defines
@@ -123,16 +125,16 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "FF_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "FF_RELEASE"
-		buildoptions "/Md"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "FF_DIST"
-		buildoptions "/Md"
+		runtime "Release"
 		optimize "On"
 	 
