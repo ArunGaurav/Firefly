@@ -15,10 +15,12 @@ IncludeDir["GLFW"] = "Firefly/vendor/GLFW/include"
 IncludeDir["Glad"] = "Firefly/vendor/Glad/include"
 IncludeDir["ImGui"] = "Firefly/vendor/ImGui"
 
-include "Firefly/vendor/GLFW"
-include "Firefly/vendor/Glad"
-include "Firefly/vendor/ImGui"
+group "Dependencies"
+	include "Firefly/vendor/GLFW"
+	include "Firefly/vendor/Glad"
+	include "Firefly/vendor/ImGui"
 
+group ""
 
 project "Firefly"
 	location "Firefly"
@@ -55,6 +57,11 @@ project "Firefly"
 		"opengl32.lib"
 	}
 
+	postbuildcommands
+	{
+		("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
+	}
+
 	filter "system:windows"	
 		cppdialect "C++17"
 		systemversion "latest"
@@ -65,7 +72,6 @@ project "Firefly"
 		"FF_BUILD_DLL",
 		"GLFW_INCLUDE_NONE"
 	}
-
 
 
 	filter "configurations:Debug"
@@ -83,6 +89,7 @@ project "Firefly"
 		runtime "Release"
 		optimize "On"
 
+		
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
@@ -102,11 +109,6 @@ project "Sandbox"
 	{
 		"Firefly/src",
 		"Firefly/vendor/spdlog/include"
-	}
-	
-	postbuildcommands
-	{
-		("{COPY} ../bin/" .. outputdir .. "/Firefly/Firefly.dll" .. " ../bin/" .. outputdir .. "/%{prj.name}")
 	}
 	
 	links

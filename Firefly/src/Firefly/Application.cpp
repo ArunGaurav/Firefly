@@ -1,7 +1,9 @@
 #include "ffpch.h"
 #include "Application.h"
-#include "Firefly/Log.h"	
+#include "Firefly/Log.h"
+#include "Firefly/Input.h"
 
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 namespace Firefly {
