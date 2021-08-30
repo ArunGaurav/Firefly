@@ -11,12 +11,22 @@ public:
 
 	void OnUpdate() override
 	{
-		FF_INFO("Example layer updating!");
+		//FF_INFO("Example layer updating!");
 	}
 
 	void OnEvent(Firefly::Event& e) override
 	{
-		FF_TRACE(e);
+		if (e.GetEventType() == Firefly::EventType::KeyPressed)
+		{
+			Firefly::KeyPressedEvent& event = (Firefly::KeyPressedEvent&)e;
+			if (event.GetKeyCode() == FF_KEY_SPACE)
+			{
+				FF_WARN("Spacebar pressed! (Input Poll)");
+				FF_TRACE("Spacebar pressed! (Event)");
+			}
+
+			FF_ERROR("{0}", (char)event.GetKeyCode());
+		}
 	}
 };
 
