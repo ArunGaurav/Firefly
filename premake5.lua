@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Firefly/vendor/GLFW/include"
 IncludeDir["Glad"] = "Firefly/vendor/Glad/include"
 IncludeDir["ImGui"] = "Firefly/vendor/ImGui"
+IncludeDir["Glm"] = "Firefly/vendor/glm"
 
 group "Dependencies"
 	include "Firefly/vendor/GLFW"
@@ -37,7 +38,9 @@ project "Firefly"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -46,7 +49,8 @@ project "Firefly"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.Glm}"
 	}
 
 	links 
@@ -108,7 +112,8 @@ project "Sandbox"
 	includedirs 
 	{
 		"Firefly/src",
-		"Firefly/vendor/spdlog/include"
+		"Firefly/vendor/spdlog/include",
+		"%{IncludeDir.Glm}"
 	}
 	
 	links
